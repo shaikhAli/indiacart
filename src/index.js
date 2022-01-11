@@ -1,17 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import 'bootstrap/dist/css/bootstrap.css';
 import './index.scss'
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-// import { BrowserRouter } from "react-router-dom";
-
-import Home from './components/Home';
-import { Provider } from 'react-redux';
-
-
+import { Provider, connect } from 'react-redux';
 import { createStore } from 'redux';
+
+const Component = ({ count, handleDecrementClick,handleIncrementClick }) => {
+
+  return (
+    <div className='container'>
+      <button type="button" className="btn btn-primary button" onClick={handleDecrementClick}>Decrement</button>
+      <button type="button" className="btn btn-secondary button" onClick={handleIncrementClick}>Increment</button>
+      <h1>Helloworld React & Redux! {count}</h1>
+    </div>
+  )
+};
+
+const mapStateToProps = state => {
+  return {
+    count: state
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    handleDecrementClick: () => dispatch({ type: 'INCREMENT' }),
+    handleIncrementClick: () =>dispatch({type:'DECREMENT'})
+  }
+}
+
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 const countReducer = function (state = 0, action) {
   switch (action.type) {
@@ -29,8 +48,7 @@ let store = createStore(countReducer);
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-        <App />
-      
+      <Container />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
