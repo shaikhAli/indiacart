@@ -1,0 +1,21 @@
+
+.app-container{
+    display: flex;
+    flex-direction: row;
+    background-color: red;
+    height: 100vh;
+    font-size: 18px !important;
+    font-weight: 700;
+}
+
+.navigation-link{
+    font-size: 18px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.navbar{
+    color: red;
+    display: flex;
+    flex-direction: column;
+}
