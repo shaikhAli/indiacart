@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import {
   BrowserRouter,
   Link,
@@ -11,31 +11,35 @@ import Home from './components/Home';
 import Contact from './components/Contact';
 import About from './components/About';
 
-function App() {
-  return (
-    <BrowserRouter>
-      <h1>India Cart</h1>
-      <div className="app-container">
-        <ul>
-          <li>
-            <Link className="test" to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About Us</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact Us</Link>
-          </li>
-        </ul>
-      </div>
+import { connect } from 'react-redux';
 
-      <Routes>
-        <Route exact path='/' element={< Home />}></Route>
-        <Route exact path='/about' element={< About />}></Route>
-        <Route exact path='/contact' element={< Contact />}></Route>
-      </Routes>
-    </BrowserRouter>
+
+
+const mapStateToProps = state => {
+  return {
+    count: state
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    handleDecrementClick: () => dispatch({ type: 'DECREMENT' }),
+    handleIncrementClick: () => dispatch({ type: 'INCREMENT' })
+  }
+}
+
+function App({ count, handleDecrementClick, handleIncrementClick }) {
+  return (
+    // <div className="app-container">
+    //   <button className='btn btn-primary'>Add Counter</button>
+    //   <p className='app-text'>Hello Redux! Here is your Counter { count}</p>
+    // </div>
+    <div className='container'>
+      <button type="button" className="btn btn-primary button" onClick={handleDecrementClick}>Decrement</button>
+      <button type="button" className="btn btn-secondary button" onClick={handleIncrementClick}>Increment</button>
+      <h1>Helloworld React & Redux!! {count}</h1>
+    </div>
   );
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
