@@ -5,8 +5,9 @@ import './index.scss'
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import App from './App';
-import countReducer from './config/Reducer'
+import App from './components/App';
+import Counter from './components/Counter'
+import countReducer from './reducers/CounterReducer'
 
 
 let store = createStore(countReducer);
@@ -14,7 +15,8 @@ let store = createStore(countReducer);
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      {/* <App /> */}
+      <Counter />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
