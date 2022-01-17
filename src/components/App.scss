@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  margin: 10px;
 }
 
 .App-header {
@@ -15,6 +16,10 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.container{
+  margin-bottom: 20px;
 }
 
 // .app-text{
@@ -52,4 +57,22 @@
   font-weight: 600;
   color: #021f5a;
   // align-items: center;
+}
+.layout-container{
+  text-align: center;
+}
+
+.hook-title{
+  font-size: 27px;
+  font-weight: 600;
+  color: blue;
+}
+
+.hook-button{
+  width: 200px;
+  height: 50px;
+  background-color: blue;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
 }
